@@ -377,6 +377,12 @@ html[dir="rtl"] .fcontact b{text-align:right}
 
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
+/* one typeface and one weight across the whole site; only the LAURA VANTAGE / لورا فانتج logotype keeps its brand lettering */
+body *{font-family:var(--f-body)!important;font-weight:600!important;font-style:normal!important}
+.wm b,.wordmark b,.fbrand b,.cta-mark b{font-family:var(--f-mark)!important;font-weight:500!important}
+.wm i,.wordmark span,.fbrand i,.cta-mark i{font-family:var(--f-ar-mark)!important;font-weight:700!important}
+.wordmark span{font-weight:400!important}
+
 [hidden]{display:none!important}
 /* site assistant */
 .lv-launch{position:fixed;z-index:70;bottom:calc(20px + env(safe-area-inset-bottom,0px));inset-inline-end:calc(20px + max(env(safe-area-inset-left,0px),env(safe-area-inset-right,0px)));display:inline-flex;align-items:center;gap:10px;min-height:56px;padding:0 22px 0 8px;border:1px solid var(--gold);border-radius:999px;background:var(--green);color:var(--on-green);font:600 15px var(--f-body);cursor:pointer;box-shadow:0 14px 30px -14px rgba(20,35,28,.7);transition:background .2s,transform .2s}
