@@ -434,14 +434,10 @@ body *{font-family:var(--f-body)!important;font-weight:600!important;font-style:
 .sec-top{padding-bottom:0}
 .sec-top .jump-top{margin-top:0}
 
-/* home hero: the slogan sits to the left of the LAURA VANTAGE / لورا فانتج wordmark */
-.hero-row{display:grid;direction:ltr;grid-template-columns:minmax(0,1fr) minmax(0,420px) minmax(0,1fr);align-items:center;column-gap:clamp(20px,3vw,40px);width:100%}
-html[dir="rtl"] .hero-row>*{direction:rtl}
-.hero-row .wordmark{grid-column:2;grid-row:1;width:100%}
-.hero-slogan{grid-column:1;grid-row:1;justify-self:end;margin:0;padding-right:clamp(20px,3vw,40px);border-right:1px solid var(--gold);font-size:clamp(20px,2.2vw,30px);line-height:1.5;color:var(--gold-dk);white-space:nowrap;text-align:center}
-.hero-slogan .sep{color:var(--gold);padding-inline:.2em}
-html[data-l="en"] .hero-slogan{font-size:clamp(16px,1.7vw,22px)}
-@media (max-width:860px){.hero-row{grid-template-columns:minmax(0,1fr);row-gap:14px;justify-items:center}.hero-row .wordmark{grid-column:1;grid-row:1;width:min(100%,420px)}.hero-slogan{grid-column:1;grid-row:2;justify-self:center;border-right:0;padding-right:0;white-space:normal}}
+/* home hero: the slogan closes the hero, under the tagline */
+.hero-slogan{margin:10px 0 0;font-size:clamp(24px,2.6vw,34px);line-height:1.5;color:var(--gold-dk);text-align:center}
+.hero-slogan .sep{color:var(--gold);padding-inline:.25em}
+html[data-l="en"] .hero-slogan{font-size:clamp(18px,2vw,26px)}
 
 [hidden]{display:none!important}
 /* site assistant */
@@ -506,10 +502,9 @@ html[dir="rtl"] .lv-send .lv-arrow{transform:scaleX(-1);transform-box:fill-box;t
 <main><div class="page" data-page="home" hidden>
 <section class="cover"><div class="cover-in">
  <div class="cover-txt">
-  <div class="hero-row"><p class="hero-slogan"><span class="ar" lang="ar">جودة تُبنى <span class="sep">..</span> تميز يستمر</span><span class="en" lang="en">Quality built <span class="sep">·</span> Excellence sustained</span></p>
-  <h1 class="wordmark"><b>LAURA VANTAGE</b><span lang="ar">لورا فانتج</span><img src="assets/divider.png" alt="" width="900" height="59"></h1></div>
+  <h1 class="wordmark"><b>LAURA VANTAGE</b><span lang="ar">لورا فانتج</span><img src="assets/divider.png" alt="" width="900" height="59"></h1>
   <p class="tagline"><span lang="en">Quality, Accreditation, Excellence &amp; Consulting</span><span lang="ar">للاستشارات والجودة والاعتماد والتميز</span></p>
-  <div class="btns"><a class="btn btn-green" href="#contact"><span class="ar" lang="ar">تواصل معنا</span><span class="en" lang="en">Contact us</span> <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-line" href="#services"><span class="ar" lang="ar">خدماتنا</span><span class="en" lang="en">Our services</span></a></div>
+  <p class="hero-slogan"><span class="ar" lang="ar">جودة تُبنى <span class="sep">..</span> تميز يستمر</span><span class="en" lang="en">Quality built <span class="sep">·</span> Excellence sustained</span></p>
  </div>
 </div></section>
 
