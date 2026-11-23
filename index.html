@@ -97,7 +97,7 @@ html[data-l="en"] .top-slogan{font:500 clamp(16px,1.6vw,21px)/1.3 var(--f-mark);
 html[data-l="en"] .ftitle{letter-spacing:-.01em}
 .sand .ftitle{--gap:var(--sand)}
 .green .ftitle{--gap:var(--green);color:var(--on-green);border-color:var(--gold)}
-.head{display:grid;gap:18px;margin-bottom:clamp(36px,5vw,60px)}
+.head{display:grid;gap:18px;justify-items:start;margin-bottom:clamp(36px,5vw,60px)}
 .head.row{grid-template-columns:1fr auto;align-items:end}
 .head.row>div{display:grid;gap:18px;justify-items:start}
 @media (max-width:720px){.head.row{grid-template-columns:1fr}}
@@ -293,6 +293,41 @@ html[data-l="en"] .vcard small{font:700 15px var(--f-ar-mark);letter-spacing:0;t
 .d-body{display:grid;gap:16px;min-width:0}
 .ex-note{margin:0;padding:16px 18px;border-radius:4px;background:var(--sand);border-inline-start:3px solid var(--gold);font-size:15.5px;line-height:1.75;color:var(--ink)}
 .ex-note b{color:var(--gold-dk)}
+/* readiness check */
+.rd{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(20px,3vw,36px);align-items:start}
+@media (max-width:900px){.rd{grid-template-columns:1fr}}
+.rd-main{display:grid;gap:14px;min-width:0}
+.rd-step{margin:0;font-size:15px;color:var(--gold-dk)}
+.rd-secs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:10px}
+.rd-sec{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 18px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--green);font-size:15px;cursor:pointer;transition:border-color .2s,background .2s}
+.rd-sec .ic.sm{width:22px;height:22px;color:var(--gold-dk)}
+.rd-sec:hover{border-color:var(--gold)}
+.rd-sec[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:var(--on-green)}
+.rd-sec[aria-pressed="true"] .ic.sm{color:var(--gold-lt)}
+.rd-qs{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:rq}
+.rd-q{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 18px;border:1px solid var(--line);border-radius:6px;background:var(--card);counter-increment:rq}
+.rd-q p{margin:0;font-size:15.5px;line-height:1.6;color:var(--ink);min-width:0}
+.rd-q p::before{content:counter(rq) ". ";color:var(--gold-dk)}
+.rd-q.done{border-color:rgba(184,145,83,.6)}
+.rd-yn{display:flex;gap:6px;flex:none}
+.rd-yn button{min-width:58px;min-height:40px;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:var(--cream);color:var(--green);font-size:14px;cursor:pointer}
+.rd-yn button:hover{border-color:var(--gold)}
+.rd-yn button[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:var(--on-green)}
+@media (max-width:520px){.rd-q{flex-direction:column;align-items:stretch}.rd-yn{justify-content:flex-end}}
+.rd-result{position:sticky;top:calc(150px + env(safe-area-inset-top,0px));display:grid;gap:14px;padding:26px 24px;border:1px solid var(--gold);border-radius:6px;background:var(--card);min-width:0}
+@media (max-width:900px){.rd-result{position:static}}
+.rd-meter{display:flex;align-items:center;gap:14px}
+.rd-track{flex:1;height:12px;border-radius:999px;background:var(--sand);overflow:hidden;border:1px solid var(--line)}
+.rd-fill{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold-dk),var(--gold));border-radius:999px;transition:width .4s ease}
+html[dir="rtl"] .rd-fill{margin-inline-start:0;background:linear-gradient(270deg,var(--gold-dk),var(--gold))}
+.rd-meter b{font-size:20px;color:var(--green);font-variant-numeric:tabular-nums;white-space:nowrap}
+.rd-level{margin:0;font-size:16px;color:var(--green)}
+.rd-h{margin:4px 0 0;font-size:14px;color:var(--gold-dk)}
+.rd-list{margin:6px 0 0;padding-inline-start:20px;display:grid;gap:4px;font-size:15px;color:var(--ink)}
+.rd-list li::marker{color:var(--gold)}
+#rdRec .chips{margin-top:10px}
+.rd-send{justify-self:start}
+.rd-note{margin:0;font-size:12.5px;color:var(--muted)}
 /* approach timeline, after the profile's methodology page */
 .timeline{list-style:none;padding:0;display:grid;gap:clamp(18px,3vw,28px);position:relative}
 .tl-row{display:grid;grid-template-columns:minmax(0,.8fr) 40px minmax(0,1.6fr);gap:clamp(12px,2vw,24px);align-items:center}
@@ -467,6 +502,27 @@ html[dir="rtl"] .lv-send .lv-arrow{transform:scaleX(-1);transform-box:fill-box;t
 <section class="s green"><div class="wrap">
  <div class="head row"><div><h2 class="ftitle"><span class="ar" lang="ar">خدماتنا</span><span class="en" lang="en">Our services</span></h2><p class="sub"><span class="ar" lang="ar">من تحليل الفجوات إلى متابعة فعالية التنفيذ.</span><span class="en" lang="en">From gap analysis to implementation follow-up.</span></p></div><a class="more" href="#services"><span class="ar" lang="ar">كل الخدمات</span><span class="en" lang="en">All services</span> <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
  <div class="grid3"><article class="svc"><span class="ic " aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-gap"/></svg></span><div><h3><span class="ar" lang="ar">تحليل الفجوات والجاهزية</span><span class="en" lang="en">Gap and readiness analysis</span></h3><p><span class="ar" lang="ar">تقييم الوضع الراهن وتحديد الأولويات ووضع خطة لإغلاق الفجوات.</span><span class="en" lang="en">We assess the current situation, set priorities and build a plan to close the gaps.</span></p></div></article><article class="svc"><span class="ic " aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-systems"/></svg></span><div><h3><span class="ar" lang="ar">بناء الأنظمة والسياسات والإجراءات</span><span class="en" lang="en">Systems, policies and procedures</span></h3><p><span class="ar" lang="ar">تصميم الوثائق والنماذج التشغيلية بما يسهم في تطوير الخدمات وتشغيلها بكفاءة.</span><span class="en" lang="en">We design the operational documents and forms that help develop your services and run them efficiently.</span></p></div></article><article class="svc"><span class="ic " aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-audit"/></svg></span><div><h3><span class="ar" lang="ar">التدقيق الداخلي والتقييم الافتراضي</span><span class="en" lang="en">Internal audit and mock assessment</span></h3><p><span class="ar" lang="ar">مراجعة الأدلة والتحقق من التطبيق ومتابعة الإجراءات التصحيحية.</span><span class="en" lang="en">We review the evidence, verify implementation and follow up on corrective actions.</span></p></div></article><article class="svc"><span class="ic " aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-gauge"/></svg></span><div><h3><span class="ar" lang="ar">متابعة فعالية التنفيذ</span><span class="en" lang="en">Implementation follow-up</span></h3><p><span class="ar" lang="ar">متابعة فعالية التنفيذ لضمان استدامة التحسين.</span><span class="en" lang="en">We follow up on how effectively the work is implemented, so the improvement lasts.</span></p></div></article><article class="svc"><span class="ic " aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-risk"/></svg></span><div><h3><span class="ar" lang="ar">إدارة المخاطر وتحسين الأداء</span><span class="en" lang="en">Risk management and performance improvement</span></h3><p><span class="ar" lang="ar">إدارة المخاطر وتحسين الأداء من خلال بناء سجل للمخاطر ووضع خطط لمعالجتها.</span><span class="en" lang="en">We manage risk and improve performance by building a risk register and plans to treat each risk.</span></p></div></article><article class="svc"><span class="ic " aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-coach"/></svg></span><div><h3><span class="ar" lang="ar">تنمية قدرات الفريق</span><span class="en" lang="en">Team capability development</span></h3><p><span class="ar" lang="ar">من خلال التدريب والتوجيه التطبيقي وتحويل المعرفة إلى ممارسة عملية.</span><span class="en" lang="en">Through training and applied coaching that turn knowledge into everyday practice.</span></p></div></article></div>
+</div></section>
+
+<section class="s sand readiness" id="readiness"><div class="wrap">
+ <div class="head"><h2 class="ftitle"><span class="ar" lang="ar">اختبر جاهزية منشأتك</span><span class="en" lang="en">Check your facility's readiness</span></h2><p class="sub"><span class="ar" lang="ar">أجب عن ستة أسئلة قصيرة لتعرف من أين تبدأ، وأي خدماتنا تناسب منشأتك.</span><span class="en" lang="en">Answer six short questions to see where to start and which of our services fit your facility.</span></p></div>
+ <div class="rd">
+  <div class="rd-main">
+   <p class="rd-step"><span class="ar" lang="ar">1. اختر قطاع منشأتك</span><span class="en" lang="en">1. Choose your facility's sector</span></p>
+   <div class="rd-secs"><button type="button" class="rd-sec" data-sec="health" aria-pressed="false"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-health"/></svg></span><span><span class="ar" lang="ar">القطاع الصحي</span><span class="en" lang="en">Healthcare</span></span></button><button type="button" class="rd-sec" data-sec="edu" aria-pressed="false"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-edu"/></svg></span><span><span class="ar" lang="ar">القطاع التعليمي</span><span class="en" lang="en">Education</span></span></button><button type="button" class="rd-sec" data-sec="industry" aria-pressed="false"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-industry"/></svg></span><span><span class="ar" lang="ar">القطاع الصناعي والتجاري</span><span class="en" lang="en">Industrial and commercial</span></span></button><button type="button" class="rd-sec" data-sec="agri" aria-pressed="false"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-agri"/></svg></span><span><span class="ar" lang="ar">القطاع الزراعي</span><span class="en" lang="en">Agriculture</span></span></button></div>
+   <p class="rd-step"><span class="ar" lang="ar">2. أجب عن الأسئلة</span><span class="en" lang="en">2. Answer the questions</span></p>
+   <ol class="rd-qs"><li class="rd-q" data-i="0"><p><span class="ar" lang="ar">هل حددتم المعيار أو البرنامج المنطبق على منشأتكم؟</span><span class="en" lang="en">Have you identified the standard or programme that applies to your facility?</span></p><div class="rd-yn" role="group"><button type="button" data-v="1" aria-pressed="false"><span class="ar" lang="ar">نعم</span><span class="en" lang="en">Yes</span></button><button type="button" data-v="0" aria-pressed="false"><span class="ar" lang="ar">لا</span><span class="en" lang="en">No</span></button></div></li><li class="rd-q" data-i="1"><p><span class="ar" lang="ar">هل قيّمتم وضعكم الراهن مقارنة بمتطلبات المعيار؟</span><span class="en" lang="en">Have you assessed where you stand against the standard's requirements?</span></p><div class="rd-yn" role="group"><button type="button" data-v="1" aria-pressed="false"><span class="ar" lang="ar">نعم</span><span class="en" lang="en">Yes</span></button><button type="button" data-v="0" aria-pressed="false"><span class="ar" lang="ar">لا</span><span class="en" lang="en">No</span></button></div></li><li class="rd-q" data-i="2"><p><span class="ar" lang="ar">هل لديكم سياسات وإجراءات ونماذج مكتوبة ومطبّقة؟</span><span class="en" lang="en">Do you have written policies, procedures and forms that are in use?</span></p><div class="rd-yn" role="group"><button type="button" data-v="1" aria-pressed="false"><span class="ar" lang="ar">نعم</span><span class="en" lang="en">Yes</span></button><button type="button" data-v="0" aria-pressed="false"><span class="ar" lang="ar">لا</span><span class="en" lang="en">No</span></button></div></li><li class="rd-q" data-i="3"><p><span class="ar" lang="ar">هل تجرون تدقيقًا داخليًا وتتابعون الإجراءات التصحيحية؟</span><span class="en" lang="en">Do you run internal audits and follow up on corrective actions?</span></p><div class="rd-yn" role="group"><button type="button" data-v="1" aria-pressed="false"><span class="ar" lang="ar">نعم</span><span class="en" lang="en">Yes</span></button><button type="button" data-v="0" aria-pressed="false"><span class="ar" lang="ar">لا</span><span class="en" lang="en">No</span></button></div></li><li class="rd-q" data-i="4"><p><span class="ar" lang="ar">هل لديكم سجل للمخاطر وخطط لمعالجتها؟</span><span class="en" lang="en">Do you have a risk register with plans to treat each risk?</span></p><div class="rd-yn" role="group"><button type="button" data-v="1" aria-pressed="false"><span class="ar" lang="ar">نعم</span><span class="en" lang="en">Yes</span></button><button type="button" data-v="0" aria-pressed="false"><span class="ar" lang="ar">لا</span><span class="en" lang="en">No</span></button></div></li><li class="rd-q" data-i="5"><p><span class="ar" lang="ar">هل تلقّى فريقكم تدريبًا على متطلبات المعيار؟</span><span class="en" lang="en">Has your team been trained on the standard's requirements?</span></p><div class="rd-yn" role="group"><button type="button" data-v="1" aria-pressed="false"><span class="ar" lang="ar">نعم</span><span class="en" lang="en">Yes</span></button><button type="button" data-v="0" aria-pressed="false"><span class="ar" lang="ar">لا</span><span class="en" lang="en">No</span></button></div></li></ol>
+  </div>
+  <aside class="rd-result" aria-live="polite">
+   <p class="eyebrow"><span class="ar" lang="ar">نتيجتك</span><span class="en" lang="en">Your result</span></p>
+   <div class="rd-meter"><div class="rd-track"><span class="rd-fill" id="rdFill"></span></div><b id="rdScore" dir="ltr">0 / 6</b></div>
+   <p class="rd-level" id="rdLevel"><span class="ar" lang="ar">ابدأ بالإجابة لتظهر نتيجتك.</span><span class="en" lang="en">Start answering to see your result.</span></p>
+   <div id="rdRec"></div>
+   <a class="btn btn-green rd-send" id="rdSend" href="https://wa.me/966505442626" target="_blank" rel="noopener"><span class="ar" lang="ar">أرسل نتيجتك واطلب استشارة</span><span class="en" lang="en">Send your result and ask for advice</span> <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+   <p class="rd-note"><span class="ar" lang="ar">فحص مبدئي للمساعدة في تحديد نقطة البداية، وليس تقييمًا رسميًا.</span><span class="en" lang="en">A first check to help you find a starting point, not a formal assessment.</span></p>
+  </aside>
+ </div>
+ <script type="application/json" id="rdData">{"q": [{"ar": "هل حددتم المعيار أو البرنامج المنطبق على منشأتكم؟", "en": "Have you identified the standard or programme that applies to your facility?", "svc": 0}, {"ar": "هل قيّمتم وضعكم الراهن مقارنة بمتطلبات المعيار؟", "en": "Have you assessed where you stand against the standard's requirements?", "svc": 0}, {"ar": "هل لديكم سياسات وإجراءات ونماذج مكتوبة ومطبّقة؟", "en": "Do you have written policies, procedures and forms that are in use?", "svc": 1}, {"ar": "هل تجرون تدقيقًا داخليًا وتتابعون الإجراءات التصحيحية؟", "en": "Do you run internal audits and follow up on corrective actions?", "svc": 2}, {"ar": "هل لديكم سجل للمخاطر وخطط لمعالجتها؟", "en": "Do you have a risk register with plans to treat each risk?", "svc": 4}, {"ar": "هل تلقّى فريقكم تدريبًا على متطلبات المعيار؟", "en": "Has your team been trained on the standard's requirements?", "svc": 5}], "svc": [{"ar": "تحليل الفجوات والجاهزية", "en": "Gap and readiness analysis"}, {"ar": "بناء الأنظمة والسياسات والإجراءات", "en": "Systems, policies and procedures"}, {"ar": "التدقيق الداخلي والتقييم الافتراضي", "en": "Internal audit and mock assessment"}, {"ar": "متابعة فعالية التنفيذ", "en": "Implementation follow-up"}, {"ar": "إدارة المخاطر وتحسين الأداء", "en": "Risk management and performance improvement"}, {"ar": "تنمية قدرات الفريق", "en": "Team capability development"}], "sec": {"health": {"ar": "القطاع الصحي", "en": "Healthcare", "std": ["CBAHI", "JCI", "CARF", "ACHS"]}, "edu": {"ar": "القطاع التعليمي", "en": "Education", "std": ["ISO", "Cognia", "ACTD", "EFQM"]}, "industry": {"ar": "القطاع الصناعي والتجاري", "en": "Industrial and commercial", "std": ["ISO"]}, "agri": {"ar": "القطاع الزراعي", "en": "Agriculture", "std": []}}}</script>
 </div></section>
 
 <section class="s"><div class="wrap">
@@ -886,6 +942,54 @@ html[dir="rtl"] .lv-send .lv-arrow{transform:scaleX(-1);transform-box:fill-box;t
     try{navigator.clipboard.writeText('info@lauravantage.com').then(function(){msg.textContent=en?'Email copied.':'تم نسخ البريد.';},sel);}catch(e){sel();}
   });
 
+
+  // readiness check
+  (function(){
+    var root=document.getElementById('readiness'), dEl=document.getElementById('rdData');
+    if(!root||!dEl)return;
+    var D=JSON.parse(dEl.textContent), sec=null, ans=D.q.map(function(){return null;});
+    var fill=document.getElementById('rdFill'), score=document.getElementById('rdScore'), level=document.getElementById('rdLevel'), rec=document.getElementById('rdRec'), send=document.getElementById('rdSend');
+    function L(){return d.getAttribute('data-l')==='en'?'en':'ar';}
+    function render(){
+      var l=L(), en=l==='en', yes=0, done=0, need=[];
+      ans.forEach(function(a,i){ if(a!==null){done++; if(a)yes++; else if(need.indexOf(D.q[i].svc)<0)need.push(D.q[i].svc);} });
+      fill.style.width=(yes/ans.length*100)+'%';
+      score.textContent=yes+' / '+ans.length;
+      rec.textContent='';
+      if(done<ans.length){
+        level.textContent=done? (en?('You have answered '+done+' of '+ans.length+' questions.'):('أجبت عن '+done+' من '+ans.length+' أسئلة.')) : (en?'Start answering to see your result.':'ابدأ بالإجابة لتظهر نتيجتك.');
+      } else {
+        level.textContent=en?(yes+' of '+ans.length+' basics are already in place.'):('لديكم '+yes+' من '+ans.length+' أساسيات متوفرة.');
+      }
+      var list=need.length?need:(done===ans.length?[3]:[]);
+      if(list.length){
+        var h=document.createElement('p'); h.className='rd-h'; h.textContent=need.length?(en?'We suggest starting with:':'نقترح أن تبدأ بـ:'):(en?'To keep improving, we suggest:':'لاستدامة التحسين نقترح:');
+        var ul=document.createElement('ul'); ul.className='rd-list';
+        list.forEach(function(k){var li=document.createElement('li'); li.textContent=D.svc[k][l]; ul.appendChild(li);});
+        rec.appendChild(h); rec.appendChild(ul);
+      }
+      if(sec&&D.sec[sec].std.length){
+        var c=document.createElement('div'); c.className='chips';
+        D.sec[sec].std.forEach(function(x){var sp=document.createElement('span'); sp.className='chip'; sp.textContent=x; c.appendChild(sp);});
+        rec.appendChild(c);
+      }
+      var lines=[en?'Hello Laura Vantage,':'مرحباً لورا فانتج،', en?'I completed the readiness check on your website.':'أكملت فحص الجاهزية على موقعكم.'];
+      if(sec)lines.push((en?'Sector: ':'القطاع: ')+D.sec[sec][l]);
+      if(done)lines.push((en?'Result: ':'النتيجة: ')+yes+' / '+ans.length);
+      if(need.length)lines.push((en?'Services I may need: ':'الخدمات التي قد أحتاجها: ')+need.map(function(k){return D.svc[k][l];}).join(en?', ':'، '));
+      send.href='https://wa.me/966505442626?text='+encodeURIComponent(lines.join('\n'));
+    }
+    root.addEventListener('click',function(e){
+      var b=e.target.closest('.rd-sec');
+      if(b){ sec=b.getAttribute('data-sec'); root.querySelectorAll('.rd-sec').forEach(function(x){x.setAttribute('aria-pressed', x===b?'true':'false');}); render(); return; }
+      var y=e.target.closest('.rd-yn button');
+      if(y){ var q=y.closest('.rd-q'), i=+q.getAttribute('data-i'); ans[i]=y.getAttribute('data-v')==='1';
+        q.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed', x===y?'true':'false');}); q.classList.add('done'); render(); }
+    });
+    new MutationObserver(render).observe(d,{attributes:true,attributeFilter:['data-l']});
+    render();
+  })();
+
   // WhatsApp message builder: keeps the send link's text in sync with the form
   var f=document.getElementById('waForm'), send=document.getElementById('waSend');
   function val(id){var el=document.getElementById(id);return el?el.value.trim():'';}
@@ -908,4 +1012,5 @@ html[dir="rtl"] .lv-send .lv-arrow{transform:scaleX(-1);transform-box:fill-box;t
 
 </script>
 
+<script defer src="/_vercel/insights/script.js"></script>
 </body></html>
